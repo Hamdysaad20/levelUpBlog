@@ -21,6 +21,16 @@ export const getComment = async (req: Request, res: Response) => {
   }
 };
 
+//get comments by post id
+export const getCommentsByPostId = async (req: Request, res: Response) => {
+  try {
+    const comments = await Item.find({ post: req.params.id });
+    res.status(200).json(comments);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 //Create a new comment
 export const createComment = async (req: Request, res: Response) => {
   try {
