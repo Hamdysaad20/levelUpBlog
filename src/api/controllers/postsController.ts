@@ -21,6 +21,26 @@ export const getPost = async (req: Request, res: Response) => {
   }
 };
 
+//get all posts where enabled is true
+export const getEnabledPosts = async (req: Request, res: Response) => {
+  try {
+    const posts = await Item.find({ enabled: true });
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+// get all posts where enabled is false
+export const getDisabledPosts = async (req: Request, res: Response) => {
+  try {
+    const posts = await Item.find({ enabled: false });
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 //Create a new post
 export const createPost = async (req: Request, res: Response) => {
   try {

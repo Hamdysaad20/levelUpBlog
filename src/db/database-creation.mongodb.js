@@ -35,7 +35,7 @@ db.createCollection("posts", {
         $jsonSchema:
         {
             bsonType: "object",
-            required: ["title", "image", "summary", "content", "author", "createdAt", "keywords"],
+            required: ["title", "image", "summary", "content", "author", "createdAt", "keywords", "enabled"],
             properties:
             {
                 title:
@@ -94,6 +94,11 @@ db.createCollection("posts", {
                         description: "Keywords must be an array of strings"
                     },
                     description: "Keywords must be an array and is required"
+                },
+                enabled:
+                {
+                    bsonType: "bool",
+                    description: "Enabled must be a boolean and is required"
                 }
             }
         }
