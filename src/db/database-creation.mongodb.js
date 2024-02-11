@@ -104,39 +104,3 @@ db.createCollection("posts", {
         }
     }
 })
-
-
-db.createCollection("comments",
-    {
-        validator:
-        {
-            $jsonSchema:
-            {
-                bsonType: "object",
-                required: ["content", "author", "post", "createdAt"],
-                properties:
-                {
-                    content:
-                    {
-                        bsonType: "string",
-                        description: "Content must be a string and is required"
-                    },
-                    author:
-                    {
-                        bsonType: "objectId",
-                        description: "Author must be a valid ObjectId and is required"
-                    },
-                    post:
-                    {
-                        bsonType: "objectId",
-                        description: "Post must be a valid ObjectId and is required"
-                    },
-                    createdAt:
-                    {
-                        bsonType: "date",
-                        description: "Creation date must be a date and is required"
-                    },
-                }
-            }
-        }
-    })
