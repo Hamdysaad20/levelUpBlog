@@ -13,6 +13,7 @@ interface IPost extends Document {
   author: mongoose.Schema.Types.ObjectId;
   createdAt: Date;
   keywords: string[];
+  enabled: boolean;
 }
 
 const PostSchema: Schema = new Schema({
@@ -28,6 +29,7 @@ const PostSchema: Schema = new Schema({
   author: { type: mongoose.Schema.Types.ObjectId, required: true },
   createdAt: { type: Date, required: true },
   keywords: [{ type: String, required: true }],
+  enabled: { type: Boolean, required: true }
 });
 
 export default mongoose.model<IPost>("Post", PostSchema);
