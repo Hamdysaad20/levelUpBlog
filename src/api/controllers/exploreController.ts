@@ -6,6 +6,7 @@ export const getPost = async (req: Request, res: Response) => {
   try {
     const post = await Item.findById(req.params.id);
     res.status(200).json({
+      id: post?._id,
       title: post?.title,
       image: post?.image,
       keywords: post?.keywords,
@@ -22,6 +23,7 @@ export const getEnabledPosts = async (req: Request, res: Response) => {
     const posts = await Item.find({ enabled: true });
     res.status(200).json(
       posts.map((post) => ({
+        id: post._id,
         title: post.title,
         image: post.image,
         keywords: post.keywords,
